@@ -4,7 +4,6 @@ require 'rake/rdoctask'
 require 'rcov/rcovtask'
 
 begin
-  gem('namelessjon-jeweler')
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "wiki_lib"
