@@ -9,7 +9,7 @@ begin
     s.name = "wiki_lib"
     s.summary = "A simple library to wrap around some common wiki operations"
     s.email = "jonathan.stott@gmail.com"
-    s.homepage = "http://github.com/namelessjon/wiki-lib"
+    s.homepage = "http://github.com/namelessjon/wiki_lib"
     s.description = "A simple library to wrap around some common wiki operations\nCurrently only PMWiki is supported, but more will be added as and when."
     s.authors = ["Jonathan Stott"]
     s.add_dependency 'mechanize', '~>0.8'

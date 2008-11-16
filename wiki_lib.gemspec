@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = %q{A simple library to wrap around some common wiki operations Currently only PMWiki is supported, but more will be added as and when.}
   s.email = %q{jonathan.stott@gmail.com}
   s.files = ["LICENSE", "README", "Rakefile", "lib/wiki_lib", "lib/wiki_lib/pm_wiki.rb", "lib/wiki_lib.rb", "spec/spec_helper.rb", "spec/wiki_lib_spec.rb"]
-  s.homepage = %q{http://github.com/namelessjon/wiki-lib}
+  s.homepage = %q{http://github.com/namelessjon/wiki_lib}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A simple library to wrap around some common wiki operations}
