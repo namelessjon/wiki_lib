@@ -6,12 +6,15 @@ require 'rcov/rcovtask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "wiki-lib"
-    s.summary = "TODO"
+    s.name = "wiki_lib"
+    s.summary = "A simple library to wrap around some common wiki operations"
     s.email = "jonathan.stott@gmail.com"
     s.homepage = "http://github.com/namelessjon/wiki-lib"
-    s.description = "TODO"
+    s.description = "A simple library to wrap around some common wiki operations\nCurrently only PMWiki is supported, but more will be added as and when."
     s.authors = ["Jonathan Stott"]
+    s.add_dependency 'mechanize', '~>0.8'
+    s.autorequire = 'wiki_lib'
+    s.files =  %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
