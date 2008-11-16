@@ -5,7 +5,7 @@ A simple library for easing interaction with wikis (currently just PMWiki) in ru
 in essence, a wrapper around the mechanize gem.
 
 require 'rubygems'
-gem 'namelessjon-wiki-lib'
+gem 'namelessjon-wiki_lib'
 require 'wiki_lib'
 
 @pm_wiki = WikiLib::PMWiki.new('http://www.pmwiki.org/wiki', 'namelessjon', 'apassword')
