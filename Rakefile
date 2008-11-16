@@ -4,6 +4,7 @@ require 'rake/rdoctask'
 require 'rcov/rcovtask'
 
 begin
+  gem('namelessjon-jeweler')
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "wiki_lib"
@@ -17,7 +18,7 @@ begin
     s.files =  %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")
   end
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler not available. Install it with: sudo gem install namelessjon-jeweler -s http://gems.github.com"
 end
 
 Rake::TestTask.new do |t|
