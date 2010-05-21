@@ -9,7 +9,7 @@ begin
     gem.email = "jonathan.stott@gmail.com"
     gem.homepage = "http://github.com/namelessjon/wiki_lib"
     gem.authors = ["Jonathan Stott"]
-    gem.add_dependency "mechanize", "~> 0.8"
+    gem.add_dependency "mechanize", "~> 1.0"
     gem.add_development_dependency "bacon"
     gem.add_development_dependency "yard"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

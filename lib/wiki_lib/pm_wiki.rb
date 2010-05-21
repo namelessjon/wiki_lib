@@ -1,3 +1,5 @@
+require 'mechanize'
+
 module WikiLib
   ##
   # Class for interacting with the PMWiki
@@ -14,7 +16,7 @@ module WikiLib
       @base = base_page
       @pass = password
       @user = username
-      @agent = ::WWW::Mechanize.new
+      @agent = ::Mechanize.new
     end
 
     ##
