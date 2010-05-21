@@ -1,43 +1,53 @@
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
-require 'rcov/rcovtask'
 
 begin
   require 'jeweler'
-  Jeweler::Tasks.new do |s|
-    s.name = "wiki_lib"
-    s.summary = "A simple library to wrap around some common wiki operations"
-    s.email = "jonathan.stott@gmail.com"
-    s.homepage = "http://github.com/namelessjon/wiki_lib"
-    s.description = "A simple library to wrap around some common wiki operations\nCurrently only PMWiki is supported, but more will be added as and when."
-    s.authors = ["Jonathan Stott"]
-    s.add_dependency 'mechanize', '~>0.8'
-    s.autorequire = 'wiki_lib'
-    s.files =  %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")
+  Jeweler::Tasks.new do |gem|
+    gem.name = "wiki_lib"
+    gem.summary = "A simple library to wrap around some common wiki operations"
+    gem.description = "A simple library to wrap around some common wiki operations\nCurrently only PMWiki is supported, but more will be added as and when."
+    gem.email = "jonathan.stott@gmail.com"
+    gem.homepage = "http://github.com/namelessjon/wiki_lib"
+    gem.authors = ["Jonathan Stott"]
+    gem.add_dependency "mechanize", "~> 0.8"
+    gem.add_development_dependency "bacon"
+    gem.add_development_dependency "yard"
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+
+require 'rake/testtask'
+Rake::TestTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.verbose = true
+end
+
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |spec|
+    spec.libs << 'spec'
+    spec.pattern = 'spec/**/*_spec.rb'
+    spec.verbose = true
   end
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install namelessjon-jeweler -s http://gems.github.com"
+  task :rcov do
+    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+  end
 end
 
-Rake::TestTask.new do |t|
-  t.libs << 'lib'
-  t.pattern = 'spec/**/*_spec.rb'
-  t.verbose = false
-end
+task :spec => :check_dependencies
 
-Rake::RDocTask.new do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'wiki-lib'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+task :default => :spec
 
-Rcov::RcovTask.new do |t|
-  t.libs << "spec"
-  t.test_files = FileList['spec/**/*_spec.rb']
-  t.verbose = true
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
 end
-
-task :default => :rcov
