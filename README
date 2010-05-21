@@ -1,25 +1,19 @@
-wiki-lib
-========
+= wiki-lib
 
 A simple library for easing interaction with wikis (currently just PMWiki) in ruby,
 in essence, a wrapper around the mechanize gem.
 
-require 'rubygems'
-gem 'namelessjon-wiki_lib'
-require 'wiki_lib'
+  require 'rubygems'
+  require 'wiki_lib'
 
-@pm_wiki = WikiLib::PMWiki.new('http://www.pmwiki.org/wiki', 'namelessjon', 'apassword')
+  @pm_wiki = WikiLib::PMWiki.new('http://www.pmwiki.org/wiki', 'auser', 'apassword')
 
-# get the page
-@page = @pm_wiki.get_page('PmWiki/FAQ')
+  # get the page
+  @page = @pm_wiki.get_page('PmWiki/FAQ')
 
-# get the current sandbox text
-@sandbox = @pm_wiki.get_edit_text('Main/WikiSandbox')
+  # get the current sandbox text
+  @sandbox = @pm_wiki.get_edit_text('Main/WikiSandbox')
 
-# upload the reversed sandbox text back to the sandbox
-@pm_wiki.upload_page('Main/WikiSandbox', @sandbox.reverse, "You're in backwards land, today".reverse)
+  # upload the reversed sandbox text back to the sandbox
+  @pm_wiki.upload_page('Main/WikiSandbox', @sandbox.reverse, "You're in backwards land, today".reverse)
 
-COPYRIGHT
-=========
-
-Copyright (c) 2008 Jonathan Stott. See LICENSE for details.
